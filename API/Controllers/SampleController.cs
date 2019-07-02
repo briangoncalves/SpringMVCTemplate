@@ -9,7 +9,8 @@ using System.Web.Http;
 
 namespace API.Controllers
 {
-    [RoutePrefix("api/sample")]
+    [RoutePrefix("api/sample")]    
+    [Filters.JwtAuthentication]
     public class SampleController : ApiController
     {
 
@@ -27,7 +28,8 @@ namespace API.Controllers
         [Route("list")]
         public HttpResponseMessage Get(int id)
         {
-            var data = SampleManager.GetSamples(id);
+            //var data = SampleManager.GetSamples(id);
+            var data = "worked";
             return Request.CreateResponse(HttpStatusCode.OK, data);
         }
     }

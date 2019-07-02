@@ -18,12 +18,6 @@ namespace API
             IApplicationContext ctx = ContextRegistry.GetContext();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             var configuration = GlobalConfiguration.Configuration;
-
-            //AreaRegistration.RegisterAllAreas();
-            //GlobalConfiguration.Configure(WebApiConfig.Register);
-            //FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            //RouteConfig.RegisterRoutes(RouteTable.Routes);
-            //BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
         protected void Application_BeginRequest()
