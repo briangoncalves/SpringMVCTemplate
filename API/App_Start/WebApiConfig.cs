@@ -20,10 +20,10 @@ namespace API
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
-            );
+            );            
 
             GlobalConfiguration.Configuration.MessageHandlers.Insert(0, new ServerCompressionHandler(new GZipCompressor(), new DeflateCompressor()));
-
+            //config.Filters.Add(new Filters.JwtAuthenticationAttribute());
             config.EnsureInitialized();
         }
     }

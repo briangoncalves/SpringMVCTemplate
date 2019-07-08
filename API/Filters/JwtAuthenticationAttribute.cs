@@ -19,7 +19,10 @@ namespace API.Filters
             var authorization = request.Headers.Authorization;
 
             if (authorization == null || authorization.Scheme != "Bearer")
+            {
+                context.ErrorResult = new AuthenticationFailureResult("Missing Jwt Token", request);
                 return;
+            }
 
             if (string.IsNullOrEmpty(authorization.Parameter))
             {

@@ -11,14 +11,16 @@ namespace API.Controllers
     [AllowAnonymous]
     public class TokenController : ApiController
     {
-        public string Get(string username, string password)
+        [HttpGet]
+        [Route("getToken")]
+        public HttpResponseMessage GetToken(string username, string password)
         {
             if (CheckUser(username, password))
             {
-                return JwtManager.GenerateToken(username);
+                return Request.CreateResponse(HttpStatusCode.OK, JwtManager.GenerateToken(username));
             }
 
-            throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            return Request.CreateResponse(HttpStatusCode.Unauthorized);
         }
 
         private bool CheckUser(string username, string password)

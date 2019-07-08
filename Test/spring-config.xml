@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net" xmlns:tx="http://www.springframework.net/tx" xmlns:aop="http://www.springframework.net/aop" xmlns:db="http://www.springframework.net/database">
+  <object id="springHelper" type="API.SpringHelper, API, Version=1.0.0.0, Culture=neutral" singleton="true" />
+  <object name="appConfigPropertyHolder" type="Spring.Objects.Factory.Config.PropertyPlaceholderConfigurer, Spring.Core">
+    <property name="configSections">
+      <value>environmentSettings</value>
+    </property>
+  </object>
+  <object name="sqlEntityManager" type="Persistence.EntityManager, Persistence" singleton="true" init-method="Initialize">
+    <property name="ConnectionString" value="${ConnectionString}" />
+  </object>
+  <object name="sampleManager" type="Business.SampleManager, Business" singleton="true">
+    <property name="EntityManager" ref="sqlEntityManager" />
+  </object>
+  <object name="sampleController" type="API.Controllers.SampleController, API" singleton="false">
+    <property name="SampleManager" ref="sampleManager" />
+  </object>
+  <object name="tokenController" type="API.Controllers.TokenController, API" singleton="false">
+  </object>
+</objects>

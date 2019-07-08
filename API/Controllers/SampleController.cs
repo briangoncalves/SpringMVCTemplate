@@ -24,11 +24,11 @@ namespace API.Controllers
         /// Returns a list of events
         /// </summary>
         /// <returns>List of events</returns>
-        [HttpPost]
+        [HttpGet]
         [Route("list")]
         public HttpResponseMessage Get(int id)
         {
-            //var data = SampleManager.GetSamples(id);
+            //var data = SampleManager.GetSamples(id);            
             var data = "worked";
             return Request.CreateResponse(HttpStatusCode.OK, data);
         }
